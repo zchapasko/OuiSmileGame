@@ -79,7 +79,7 @@ var i = null;
 var timer = 0;
 var score = 0;
 watchTime = true;
-music = [pop, pop];
+music = [B,A,G,A,B,B,B,A,A,A,B,D,D,B,A,G,A,B,B,B,A,A,B,A,G];
 
 //function to repeat 30 times per second, updating the game
 setInterval(function(){
@@ -105,7 +105,7 @@ setInterval(function(){
 			&& (currentBubble.x + bubbleSize) > canvasX  
 			&& currentBubble.y < canvasY 
 			&& (currentBubble.y + bubbleSize) > canvasY){
-				music[bubbleNum %1].play();
+				music[bubbleNum].play();
 				currentBubble.popped = true;
 		}
 		//if bubble has been popped, make a new one
