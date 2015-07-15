@@ -84,6 +84,12 @@ music = [B,A,G,A,B,B2,B3,A,A2,A3,B,D,D2,B,A,G,A,B,B2,B3,B4,A,A2,B,A,G];
 i = null;
 j = null;
 newBubbleQueued = false;
+victory = false;
+
+function victoryFunc(){
+	console.log("Victory Achieved");
+}
+
 
 //function to repeat 30 times per second, updating the game
 setInterval(function(){
@@ -94,6 +100,7 @@ setInterval(function(){
 	//if no bubbles exist, make one
 	if(bubbleArray.length == 0){
 		bubbleArray[0] = new Bubble(Math.round(Math.random()));
+		// console.log(bubbleArray.length);
 	}
 
 	//check if most recent bubble has been popped
@@ -116,6 +123,7 @@ setInterval(function(){
 		canvasY = null;
 		setTimeout(function(){
 			bubbleArray[bubbleArray.length] = new Bubble(Math.round(Math.random()));
+			// console.log(bubbleArray.length);
 			return;
 		}, Math.floor(Math.random() * 700) + 100);
 	}
@@ -126,10 +134,24 @@ setInterval(function(){
 		bubbleArray[i].draw(context);
 	}
 
-	if (bubbleArray.length == 25) {
-
+	if(bubbleArray.length == 26 && !victory){
+		if(bubbleArray[25].popped){
+			victory = true;
+			victoryFunc();
+		}
+		
 	}
 
-
-
 }, 33);
+
+//function for saving the canvas
+// if(bubbleArray.length == 26)
+// {
+// 	if(bubbleArray[25].popped){
+// 		var dataURL = canvas.toDataURL();
+// 		console.log("dataURL: " + dataURL);
+// 	 	// document.getElementById('canvasImg').src = dataURL;
+// 	 	window.open(dataURL,'_blank');
+// 	}	
+// }
+
