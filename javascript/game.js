@@ -75,18 +75,13 @@ function Bubble (color) {
 
 bubbleArray = [];
 currentBubble = null;
-var i = null;
-var timer = 0;
-var score = 0;
-watchTime = true;
 music = [B,A,G,A,B,B,B,A,A,A,B,D,D,B,A,G,A,B,B,B,A,A,B,A,G];
+i = null;
+j = null;
+newBubbleQueued = false;
 
 //function to repeat 30 times per second, updating the game
 setInterval(function(){
-	if(watchTime)
-	{
-		timer++;
-	}
 	
 	//clear the playing field
 	context.clearRect(0, 0, canvas.width, canvas.height);
@@ -105,28 +100,25 @@ setInterval(function(){
 			&& (currentBubble.x + bubbleSize) > canvasX  
 			&& currentBubble.y < canvasY 
 			&& (currentBubble.y + bubbleSize) > canvasY){
-				music[bubbleNum].play();
+				music[bubbleNum % 25].play();
 				currentBubble.popped = true;
+				newBubbleQueued = false;
 		}
 		//if bubble has been popped, make a new one
-	} else {
+	} else if (!newBubbleQueued) {
+		newBubbleQueued = true;
 		canvasX = null;
 		canvasY = null;
-		// if(1 == Math.floor(Math.random() * 50)) {
+		setTimeout(function(){
 			bubbleArray[bubbleArray.length] = new Bubble(Math.round(Math.random()));
-		// }
+			return;
+		}, 1000);
 	}
 
+	//draw bubbles/splats to canvas
 	//bubbleArray[bubbleArray.length] = new Bubble(Math.round(Math.random()));
 	for (i = 0; i < bubbleArray.length; i++){
 		bubbleArray[i].draw(context);
-	}
-
-	if(Math.floor(timer/(1000/33)) >= 30){
-		score = bubbleArray.length - 1;
-		alert("CLINKS: " + score);
-		timer = 0;
-		watchTime = false;
 	}
 
 }, 33);
