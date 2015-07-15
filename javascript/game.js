@@ -112,7 +112,7 @@ setInterval(function(){
 		setTimeout(function(){
 			bubbleArray[bubbleArray.length] = new Bubble(Math.round(Math.random()));
 			return;
-		}, 1000);
+		}, 900);
 	}
 
 	//draw bubbles/splats to canvas
