@@ -100,7 +100,7 @@ setInterval(function(){
 			&& (currentBubble.x + bubbleSize) > canvasX  
 			&& currentBubble.y < canvasY 
 			&& (currentBubble.y + bubbleSize) > canvasY){
-				music[bubbleNum % 1].play();
+				music[bubbleNum %1].play();
 				currentBubble.popped = true;
 				newBubbleQueued = false;
 		}
