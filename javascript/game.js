@@ -2,8 +2,13 @@ canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
 
 //resize canvas to fit window
+document.getElementById("backgroundImage").width = window.innerWidth - 20;		//POSSIBLE SCALING FIX HERE
+document.getElementById("backgroundImage").height = window.innerHeight - 20;	//JK WE'LL SKIP IT
+
 context.canvas.width  = window.innerWidth - 20;		//POSSIBLE SCALING FIX HERE
 context.canvas.height = window.innerHeight - 20;	//JK WE'LL SKIP IT
+
+
 
 canvasX = null;
 canvasY = null;
@@ -75,7 +80,7 @@ function Bubble (color) {
 
 bubbleArray = [];
 currentBubble = null;
-music = [B,A,G,A,B,B,B,A,A,A,B,D,D,B,A,G,A,B,B,B,A,A,B,A,G];
+music = [B,A,G,A,B,B,B,A,A,A,B,D,D,B,A,G,A,B,B,B,B,A,A,B,A,G];
 i = null;
 j = null;
 newBubbleQueued = false;
@@ -105,7 +110,7 @@ setInterval(function(){
 				newBubbleQueued = false;
 		}
 		//if bubble has been popped, make a new one
-	} else if (!newBubbleQueued) {
+	} else if (!newBubbleQueued && bubbleArray.length < 26) {
 		newBubbleQueued = true;
 		canvasX = null;
 		canvasY = null;
@@ -120,5 +125,11 @@ setInterval(function(){
 	for (i = 0; i < bubbleArray.length; i++){
 		bubbleArray[i].draw(context);
 	}
+
+	if (bubbleArray.length == 25) {
+
+	}
+
+
 
 }, 33);
