@@ -1,0 +1,17 @@
+body {
+	image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: pixelated;
+	background: #999999;
+}
+canvas {
+	display: block;
+	background: #FFFFFF;
+	margin: auto auto;
+}
+
+img {
+	/*width: 85px;
+	height: 85px;*/
+}
