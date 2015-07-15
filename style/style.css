@@ -3,12 +3,17 @@ body {
     image-rendering: -o-crisp-edges;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: pixelated;
-	background: #999999;
+	background: #FBCC0B;
 }
 canvas {
 	display: block;
-	background: #FFFFFF;
 	margin: auto auto;
+}
+
+#backgroundImage {
+	background: url("../images/logo2.png");
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 img {
