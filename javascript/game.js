@@ -80,7 +80,7 @@ function Bubble (color) {
 
 bubbleArray = [];
 currentBubble = null;
-music = [B,A,G,A,B,B,B,A,A,A,B,D,D,B,A,G,A,B,B,B,B,A,A,B,A,G];
+music = [B,A,G,A,B,B2,B3,A,A2,A3,B,D,D2,B,A,G,A,B,B2,B3,B4,A,A2,B,A,G];
 i = null;
 j = null;
 newBubbleQueued = false;
@@ -105,7 +105,7 @@ setInterval(function(){
 			&& (currentBubble.x + bubbleSize) > canvasX  
 			&& currentBubble.y < canvasY 
 			&& (currentBubble.y + bubbleSize) > canvasY){
-				music[bubbleNum % 25].play();
+				music[bubbleNum % 26].play();
 				currentBubble.popped = true;
 				newBubbleQueued = false;
 		}
@@ -117,7 +117,7 @@ setInterval(function(){
 		setTimeout(function(){
 			bubbleArray[bubbleArray.length] = new Bubble(Math.round(Math.random()));
 			return;
-		}, 900);
+		}, Math.floor(Math.random() * 700) + 100);
 	}
 
 	//draw bubbles/splats to canvas

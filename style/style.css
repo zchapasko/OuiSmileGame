@@ -3,7 +3,7 @@ body {
     image-rendering: -o-crisp-edges;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: pixelated;
-	background: #FFCC00;
+	background: #FBCC0B;
 }
 canvas {
 	display: block;
@@ -12,7 +12,7 @@ canvas {
 
 #backgroundImage {
 	background: url("../images/logo2.png");
-	background-repeat: repeat;
+	background-repeat: no-repeat;
 	background-position: center;
 }
 
