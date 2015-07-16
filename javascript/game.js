@@ -105,7 +105,6 @@ function endGame() {
   $('#canvas').show();
   $('#game-over').show();
   $('#menu').hide();
-}
 
 //when the player(s) win
 function victoryFunc(){

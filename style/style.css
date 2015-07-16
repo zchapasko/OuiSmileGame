@@ -16,6 +16,10 @@ canvas {
 	background-position: center;
 }
 
+#victoryBox {
+	visibility: visible;
+}
+
 img {
 	/*width: 85px;
 	height: 85px;*/
