@@ -36,12 +36,23 @@ canvas.addEventListener("mousedown", function(){
 canvas.addEventListener("mouseup", function(){
 	down = false;
 }, false);
+canvas.addEventListener("ontouchstart", function(){
+	console.log("touch start X = " + canvasX + ", Y = " + canvasY);
+	down = true;
+}, false);
+canvas.addEventListener("ontouchend", function(){
+	console.log("touch end X = " + canvasX + ", Y = " + canvasY);
+	down = false;
+}, false);
+
 canvas.addEventListener("mousemove", dragging, false);
+canvas.addEventListener("ontouchmove", dragging, false);
+
 function dragging(event) {
 	if(down){
 		canvasX = event.pageX;
 		canvasY = event.pageY;
-		//console.log("X = " + canvasX + ", Y = " + canvasY);
+		console.log("down X = " + canvasX + ", Y = " + canvasY);
 	}
 }
 
@@ -112,6 +123,7 @@ function victoryFunc(){
 	//console.log("Victory Achieved");
 	endGame();
 	setTimeout(function(){
+		Mary.currentTime = 0;
 		Mary.play();
 	}, 800);
 }
