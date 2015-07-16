@@ -1,0 +1,33 @@
+{
+  "name": "myapp",
+  "version": "0.1.5",
+  "description": "A sample nodejs app for Bluemix that use the Natural Language Classifier service",
+  "dependencies": {
+    "express": "~4.12.3"
+  },
+  "engines": {
+    "node": ">=0.10.38"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/watson-developer-cloud/natural-language-classifier-nodejs.git"
+  },
+  "author": "IBM Corp.",
+  "contributors": [
+    {
+      "name": "Venkat Ganesh Sekar",
+      "email": "vganeshs@us.ibm.com"
+    },
+    {
+      "name": "German Attanasio Ruiz",
+      "email": "germanatt@us.ibm.com"
+    }
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/watson-developer-cloud/natural-language-classifier-nodejs/issues"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
+}

@@ -105,12 +105,15 @@ function endGame() {
   $('#canvas').show();
   $('#game-over').show();
   $('#menu').hide();
+}
 
 //when the player(s) win
 function victoryFunc(){
 	//console.log("Victory Achieved");
-	Mary.play();
 	endGame();
+	setTimeout(function(){
+		Mary.play();
+	}, 800);
 }
 
 //function to repeat 30 times per second, updating the game
@@ -167,6 +170,7 @@ setInterval(function(){
 
 //reset the variables and restart the game
 function resetGame() {
+	Mary.pause();
 	bubbleArray = [];
 	currentBubble = null;
 	i = null;
