@@ -88,6 +88,8 @@ victory = false;
 
 function victoryFunc(){
 	console.log("Victory Achieved");
+	var vicBox = document.getElementById("victoryBox");
+	vicBox.style.visibility = "hidden";
 }
 
 
