@@ -1,15 +1,30 @@
+//on window load, hide the game and show the main menu
+window.onload = function() {
+  $('#canvas').hide();
+  $('#game-over').hide();
+  $('#menu').show();
+}
+
+//get canvas and context elements
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d");
 
 //resize canvas to fit window
-document.getElementById("backgroundImage").width = window.innerWidth - 20;		//POSSIBLE SCALING FIX HERE
-document.getElementById("backgroundImage").height = window.innerHeight - 20;	//JK WE'LL SKIP IT
+document.getElementById("backgroundImage").width = window.innerWidth - 20;
+document.getElementById("backgroundImage").height = window.innerHeight - 20;
+context.canvas.width  = window.innerWidth - 20;
+context.canvas.height = window.innerHeight - 20;
 
-context.canvas.width  = window.innerWidth - 20;		//POSSIBLE SCALING FIX HERE
-context.canvas.height = window.innerHeight - 20;	//JK WE'LL SKIP IT
+//massive variable initialization
+bubbleArray = [];
+currentBubble = null;
+music = [B,A,G,A,B,B2,B3,A,A2,A3,B,D,D2,B,A,G,A,B,B2,B3,B4,A,A2,B,A,G];
+i = null;
+j = null;
+newBubbleQueued = false;
+victory = false;
 
-
-
+//touch listeners
 canvasX = null;
 canvasY = null;
 
@@ -26,7 +41,7 @@ function dragging(event) {
 	if(down){
 		canvasX = event.pageX;
 		canvasY = event.pageY;
-		console.log("X = " + canvasX + ", Y = " + canvasY);
+		//console.log("X = " + canvasX + ", Y = " + canvasY);
 	}
 }
 
@@ -78,18 +93,26 @@ function Bubble (color) {
     };
 }
 
-bubbleArray = [];
-currentBubble = null;
-music = [B,A,G,A,B,B2,B3,A,A2,A3,B,D,D2,B,A,G,A,B,B2,B3,B4,A,A2,B,A,G];
-i = null;
-j = null;
-newBubbleQueued = false;
-victory = false;
-
-function victoryFunc(){
-	console.log("Victory Achieved");
+//show and hide on start
+function startGame() {
+  $('#canvas').show();
+  $('#game-over').hide();
+  $('#menu').hide();
 }
 
+//show and hide on finish
+function endGame() {
+  $('#canvas').show();
+  $('#game-over').show();
+  $('#menu').hide();
+}
+
+//when the player(s) win
+function victoryFunc(){
+	//console.log("Victory Achieved");
+	Mary.play();
+	endGame();
+}
 
 //function to repeat 30 times per second, updating the game
 setInterval(function(){
@@ -134,15 +157,27 @@ setInterval(function(){
 		bubbleArray[i].draw(context);
 	}
 
+	//if the game has finished
 	if(bubbleArray.length == 26 && !victory){
 		if(bubbleArray[25].popped){
 			victory = true;
 			victoryFunc();
 		}
-		
 	}
-
 }, 33);
+
+//reset the variables and restart the game
+function resetGame() {
+	bubbleArray = [];
+	currentBubble = null;
+	i = null;
+	j = null;
+	newBubbleQueued = false;
+	victory = false;
+	canvasX = null;
+	canvasY = null;
+	startGame();
+}
 
 //function for saving the canvas
 // if(bubbleArray.length == 26)
@@ -154,4 +189,3 @@ setInterval(function(){
 // 	 	window.open(dataURL,'_blank');
 // 	}	
 // }
-
